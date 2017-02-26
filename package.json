@@ -1,7 +1,8 @@
 {
-  "name": "dispos.io",
-  "productName": "dispos.io",
+  "name": "electron-react-boilerplate",
+  "productName": "ElectronReact",
   "version": "0.10.0",
+  "description": "Electron application boilerplate based on React, React Router, Webpack, React Hot Loader for rapid application development",
   "main": "main.js",
   "scripts": {
     "test": "cross-env NODE_ENV=test BABEL_DISABLE_CACHE=1 mocha --retries 2 --compilers js:babel-register --recursive --require ./test/setup.js test/**/*.spec.js",
@@ -28,8 +29,8 @@
   },
   "browserslist": "electron 1.4",
   "build": {
-    "productName": "dispos.io",
-    "appId": "org.lightningboss.disposio",
+    "productName": "ElectronReact",
+    "appId": "org.develar.ElectronReact",
     "category": "public.app-category.tools",
     "dmg": {
       "contents": [
@@ -76,10 +77,24 @@
     "url": "git+https://github.com/chentsulin/electron-react-boilerplate.git"
   },
   "author": {
-    "name": "Marc Nitzsche",
-    "email": "hey@marcnitzsche.de",
-    "url": "https://github.com/lightningboss"
+    "name": "C. T. Lin",
+    "email": "chentsulin@gmail.com",
+    "url": "https://github.com/chentsulin"
   },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chentsulin/electron-react-boilerplate/issues"
+  },
+  "keywords": [
+    "electron",
+    "boilerplate",
+    "react",
+    "react-router",
+    "flux",
+    "webpack",
+    "react-hot"
+  ],
+  "homepage": "https://github.com/chentsulin/electron-react-boilerplate#readme",
   "devDependencies": {
     "asar": "^0.13.0",
     "babel-core": "^6.22.1",
