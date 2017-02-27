@@ -1,12 +1,12 @@
 import React from 'react';
-import styles from './Home.css';
+import styles from './StartScreen.css';
 
 
-const Home = () => (
+const StartScreen = () => (
   <div className={styles.startScreen}>
     <h1>dispos.io</h1>
     <button className={styles.openFile} onClick={console.log}>Open File</button>
   </div>
 );
 
-export default Home;
+export default StartScreen;
