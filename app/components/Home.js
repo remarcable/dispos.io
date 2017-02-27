@@ -1,13 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styles from './Home.css';
 
 
-export default class Home extends Component {
-  render() {
-    return (
-      <div className={styles.startScreen}>
-        <h1>dispos.io</h1>
-      </div>
-    );
-  }
-}
+const Home = () => (
+  <div className={styles.startScreen}>
+    <h1>dispos.io</h1>
+    <button className={styles.openFile} onClick={console.log}>Open File</button>
+  </div>
+);
+
+export default Home;
