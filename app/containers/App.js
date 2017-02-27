@@ -1,5 +1,5 @@
-// @flow
 import React, { Component } from 'react';
+import DragBar from '../components/DragBar';
 
 export default class App extends Component {
   props: {
@@ -9,6 +9,7 @@ export default class App extends Component {
   render() {
     return (
       <div>
+        <DragBar />
         {this.props.children}
       </div>
     );
