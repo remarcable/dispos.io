@@ -164,6 +164,7 @@
     "electron-debug": "^1.1.0",
     "font-awesome": "^4.7.0",
     "react": "^15.4.2",
+    "react-addons-css-transition-group": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.2",
     "react-router": "^3.0.2",
