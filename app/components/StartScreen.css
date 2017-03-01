@@ -5,7 +5,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  animation: slideInAndFadeIn .4s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  animation: slideInAndFadeIn 1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }
 
 .openFile {
@@ -35,7 +35,7 @@
     transform: translateY(10%);
     opacity: 0;
   }
-  40% {
+  50% {
     transform: translateY(-5%);
     opacity: 1;
   }
