@@ -1,0 +1,14 @@
+.logo {
+  font-size: 64px;
+  margin: 0;
+  margin-bottom: .25em;
+  transition: .2s;
+}
+
+.logoTiny {
+  position: absolute;
+  font-size: 24px;
+  top: 20px;
+  margin: 0;
+  margin-bottom: .25em;
+}
