@@ -5,29 +5,66 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  cursor: default;
   animation: slideInAndFadeIn 1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }
 
-.openFile {
-  background-color: #BBBCC7;
-  font-family: 'Space Mono', monospace;
-  letter-spacing: 5px;
-  color: #fff;
+.buttonWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.buttonBase {
   padding: 10px;
-  text-transform: uppercase;
-  font-size: 18px;
+  margin-bottom: .25em;
   border: 0;
-  border-bottom: #818395 solid 5px;
+  border-bottom: solid 5px;
+
+  color: #fff;
+
+  font-family: 'Space Mono', monospace;
+  font-size: 18px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+
+  cursor: pointer;
   transition: .2s;
 }
 
+.buttonBase:active {
+  transform: scale(1.1);
+}
+
+.buttonBase:focus {
+  outline: 0; /* visual changes made in subclasses */
+}
+
+.openFile {
+  composes: buttonBase;
+  background-color: #BBBCC7;
+  border-bottom-color: #818395;
+}
+
 .openFile:hover {
-  background-color: #adaeb6;
+  background-color: #b3b4be;
 }
 
 .openFile:focus {
-  transform: scale(1.1);
-  outline: 0;
+  background-color: #adaeb6;
+}
+
+.newFile {
+  composes: buttonBase;
+  background-color: #008cba;
+  border-bottom-color: #005e7d;
+}
+
+.newFile:hover {
+  background-color: #0a85ad;
+}
+
+.newFile:focus {
+  background-color: #0881a8;
 }
 
 @keyframes slideInAndFadeIn {

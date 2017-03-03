@@ -6,7 +6,10 @@ import styles from './StartScreen.css';
 const StartScreen = () => (
   <div className={styles.startScreen}>
     <BigLogo />
-    <button className={styles.openFile} onClick={console.log}>Open File</button>
+    <div className={styles.buttonWrapper}>
+      <button className={styles.newFile} onClick={console.log}>New File</button>
+      <button className={styles.openFile} onClick={console.log}>Open File</button>
+    </div>
   </div>
 );
 
