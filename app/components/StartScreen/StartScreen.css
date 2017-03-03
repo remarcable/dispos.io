@@ -6,7 +6,6 @@
   justify-content: center;
   flex-direction: column;
   cursor: default;
-  animation: slideInAndFadeIn 1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }
 
 .buttonWrapper {
@@ -65,18 +64,4 @@
 
 .newFile:focus {
   background-color: #0881a8;
-}
-
-@keyframes slideInAndFadeIn {
-  0% {
-    transform: translateY(10%);
-    opacity: 0;
-  }
-  50% {
-    transform: translateY(-5%);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(0%);
-  }
 }
