@@ -12,13 +12,14 @@ import EditScreen from '../components/EditScreen/EditScreen';
 import transitions from './AppTransitions.css';
 
 const propTypes = {
-  currentPage: PropTypes.string.isRequired,
+  hasSheet: PropTypes.bool.isRequired,
+  sheet: PropTypes.object.isRequired,
 };
 
-const App = ({ currentPage }) => (
+const App = ({ hasSheet, sheet }) => (
   <div>
     <DragBar />
-    <HeaderLogo shouldShow={currentPage === 'edit'} />
+    <HeaderLogo shouldShow={hasSheet} />
     <ReactCSSTransitionGroup
       transitionAppear
       transitionName={transitions}
@@ -26,9 +27,9 @@ const App = ({ currentPage }) => (
       transitionEnterTimeout={500}
       transitionLeaveTimeout={300}
     >
-      {currentPage === 'edit'
+      {hasSheet
       ? <div key="editScreen" style={{ width: '100%', height: '100%' }}>
-          <EditScreen />
+          <EditScreen sheet={sheet} />
         </div>
       : <div key="startScreen" style={{ width: '100%', height: '100%' }}>
           <StartScreen />
@@ -41,7 +42,8 @@ const App = ({ currentPage }) => (
 App.propTypes = propTypes;
 
 const mapStateToProps = state => ({
-  currentPage: state.page.current,
+  hasSheet: !!state.sheet.name,
+  sheet: state.sheet,
 });
 
 export default connect(

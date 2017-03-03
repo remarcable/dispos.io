@@ -3,7 +3,7 @@ import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
 import rootReducer from '../reducers';
 
-const actionCreators = {};
+import * as actionCreators from '../actions/actionCreators';
 
 const logger = createLogger({
   level: 'info',

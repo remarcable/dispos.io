@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import page from './page';
+import sheet from './sheet';
 
 const rootReducer = combineReducers({
-  page,
+  sheet,
 });
 
 export default rootReducer;
