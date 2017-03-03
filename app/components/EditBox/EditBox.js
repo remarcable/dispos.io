@@ -3,15 +3,20 @@ import styles from './EditBox.css';
 
 import EditField from './EditField';
 
-const EditBox = () => (
+const EditBox = ({ fields, id }) => (
   <div className={styles.boxWrapper}>
-    <h3 className={styles.boxTitle}>Act #1</h3>
+    <h3 className={styles.boxTitle}>Act #{id}</h3>
     <div>
-      <EditField label="Name" value="Gravity Gravity Gravity Gravity Gravity Gravity Gravity Gravity Gravity Gravity Gravity s" onChange={console.log} />
-      <EditField label="Description" value="von Sara Bareilles" onChange={console.log} />
-      <EditField label="Length" value="5 minutes" onChange={console.log} />
-      <EditField label="Requirements" value="1 HH, Piano" onChange={console.log} />
-      <EditField label="Artist" value="Rebecca Schönknecht" onChange={console.log} />
+      {
+        fields.map(field => (
+          <EditField
+            key={field.label}
+            label={field.label}
+            value={field.value}
+            onChange={console.log}
+          />
+        ))
+      }
     </div>
   </div>
 );

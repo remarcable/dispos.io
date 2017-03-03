@@ -42,7 +42,7 @@ const App = ({ hasSheet, sheet }) => (
 App.propTypes = propTypes;
 
 const mapStateToProps = state => ({
-  hasSheet: !!state.sheet.name,
+  hasSheet: !!state.sheet.details,
   sheet: state.sheet,
 });
 
