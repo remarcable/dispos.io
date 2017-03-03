@@ -22,8 +22,8 @@ const App = ({ currentPage }) => (
     <ReactCSSTransitionGroup
       transitionAppear
       transitionName={transitions}
-      transitionAppearTimeout={1000}
-      transitionEnterTimeout={600}
+      transitionAppearTimeout={800}
+      transitionEnterTimeout={500}
       transitionLeaveTimeout={300}
     >
       {currentPage === 'edit'

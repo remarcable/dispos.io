@@ -8,7 +8,7 @@ body {
   -webkit-user-select: none;
   -webkit-touch-callout: none;
   user-select: none;
-  animation: backgroundColor 3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  animation: backgroundColor 1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }
 
 div[data-reactroot] {
