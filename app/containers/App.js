@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import 'typeface-space-mono/index.css';
 
 import HeaderLogo from '../components/Logo/HeaderLogo';
-import DragBar from '../components/DragBar';
+import DragBar from '../components/DragBar/DragBar';
 
-import StartScreen from '../components/StartScreen';
-import EditScreen from '../components/EditScreen';
+import StartScreen from '../components/StartScreen/StartScreen';
+import EditScreen from '../components/EditScreen/EditScreen';
 
 const propTypes = {
   currentPage: PropTypes.string.isRequired,

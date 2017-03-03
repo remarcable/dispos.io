@@ -1,5 +1,5 @@
 import React from 'react';
-import BigLogo from './Logo/BigLogo';
+import BigLogo from '../Logo/BigLogo';
 import styles from './StartScreen.css';
 
 
