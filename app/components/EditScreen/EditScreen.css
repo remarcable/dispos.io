@@ -1,8 +1,28 @@
 .editScreen {
   width: 100%;
-  height: 100%;
+  padding-top: 5em;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.editContainer {
+  width: 100%;
+  max-width: 800px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+}
+
+.title {
+  position: sticky;
+  top: 0;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  padding: 20px;
+  background-color: #F4F5F8;
+  font-size: 1em;
+  text-align: center;
 }
