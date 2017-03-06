@@ -39,3 +39,8 @@
   /* The no-outline-problem is solved via JS (see .activeLabel) */
   outline: 0;
 }
+
+.input::selection {
+  color: #fff;
+  background: #008cba;
+}
