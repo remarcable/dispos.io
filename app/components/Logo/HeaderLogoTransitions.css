@@ -1,5 +1,5 @@
 .enter, .appear {
-  animation: slideIn .4s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  animation: slideIn .5s cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }
 
 .leave {
@@ -9,12 +9,12 @@
 
 @keyframes slideIn {
   0% {
-    transform: translateY(-150%);
+    opacity: 0;
   }
   40% {
-    transform: translateY(30%);
+    opacity: 0;
   }
   100% {
-    transform: translateY(0%);
+    opacity: 1;
   }
 }

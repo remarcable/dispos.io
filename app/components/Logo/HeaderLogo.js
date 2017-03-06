@@ -13,8 +13,8 @@ const HeaderLogo = ({ shouldShow }) => (
     <ReactCSSTransitionGroup
       transitionAppear
       transitionName={transitions}
-      transitionAppearTimeout={400}
-      transitionEnterTimeout={400}
+      transitionAppearTimeout={500}
+      transitionEnterTimeout={500}
       transitionLeaveTimeout={300}
     >
       {shouldShow &&
