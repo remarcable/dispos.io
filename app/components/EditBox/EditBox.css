@@ -7,6 +7,16 @@
   background-color: #fff;
 }
 
+.generalBox {
+  /* magic number: The outside of the box should be on same x as text of "small" box below */
+  width: 99%;
+}
+
+.actBox {
+  /* magic number: The outside of the box should be on same x as text of "small" box below */
+  width: 95%;
+}
+
 .boxTitle {
   margin: 0;
   margin-bottom: 2em;
