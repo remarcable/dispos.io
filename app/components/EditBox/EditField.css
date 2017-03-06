@@ -13,6 +13,7 @@
   letter-spacing: 3px;
   text-transform: lowercase;
   color: #818395;
+  cursor: default;
 }
 
 .activeLabel {
