@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-// import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import TransitionGroupStub from './TransitionGroupStub';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import 'typeface-space-mono/index.css';
 
 import HeaderLogo from '../components/Logo/HeaderLogo';
@@ -21,7 +20,7 @@ const App = ({ hasSheet, sheet }) => (
   <div>
     <DragBar />
     <HeaderLogo shouldShow={hasSheet} />
-    <TransitionGroupStub
+    <ReactCSSTransitionGroup
       transitionAppear
       transitionName={transitions}
       transitionAppearTimeout={800}
@@ -36,7 +35,7 @@ const App = ({ hasSheet, sheet }) => (
           <StartScreen />
         </div>
     }
-    </TransitionGroupStub>
+    </ReactCSSTransitionGroup>
   </div>
 );
 

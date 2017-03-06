@@ -6,11 +6,19 @@
   animation: slideInAndFadeIn .5s cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }
 
+.enterActive, .appearActive, .enter-active, .appear-active {
+  opacity: 1;
+}
+
 .leave {
   position: absolute;
   top: 0;
   left: 0;
   animation: fadeOut .3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+.leaveActive, .leave-active {
+  opacity: 0;
 }
 
 
