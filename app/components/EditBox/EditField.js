@@ -47,7 +47,7 @@ export default class EditField extends Component {
         </h4>
         <AutosizeTextarea
           value={this.props.value}
-          onChange={this.props.onChange}
+          onChange={e => this.props.onChange(e.target.value)}
           onFocus={this.handleOnFocus}
           onBlur={this.handleOnBlur}
           ref={c => { this.textArea = c; }}

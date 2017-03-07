@@ -1,46 +1,65 @@
 import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
+
+import {
+  updateFieldGeneral,
+  updateFieldActions,
+} from '../../actions';
+
 import styles from './EditScreen.css';
 
 import GeneralBox from '../EditBox/GeneralBox';
 import ActBox from '../EditBox/ActBox';
 
 const propTypes = {
-  sheet: PropTypes.shape({
-    details: PropTypes.shape({
-      general: PropTypes.shape({
-        title: PropTypes.string.isRequired,
-        date: PropTypes.string.isRequired,
-        location: PropTypes.string.isRequired,
-        client: PropTypes.string.isRequired,
-        contact: PropTypes.string.isRequired,
-      }).isRequired,
-      schedule: PropTypes.shape({
-        start: PropTypes.string.isRequired,
-        rehearsal: PropTypes.string,
-        construction: PropTypes.string,
-        deconstruction: PropTypes.string,
-      }).isRequired,
-    }).isRequired,
-    actions: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        fields: PropTypes.shape(
-          PropTypes.shape({
-            label: PropTypes.string.isRequired,
-            value: PropTypes.string,
-          }).isRequired,
-        ).isRequired,
-      }).isRequired,
-    ).isRequired,
+  general: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired,
+    location: PropTypes.string.isRequired,
+    client: PropTypes.string.isRequired,
+    contact: PropTypes.string.isRequired,
   }).isRequired,
+  schedule: PropTypes.shape({
+    start: PropTypes.string.isRequired,
+    rehearsal: PropTypes.string,
+    construction: PropTypes.string,
+    deconstruction: PropTypes.string,
+  }).isRequired,
+  actions: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      fields: PropTypes.shape(
+        PropTypes.shape({
+          label: PropTypes.string.isRequired,
+          value: PropTypes.string,
+        }).isRequired,
+      ).isRequired,
+    }).isRequired,
+  ).isRequired,
+  onChangeGeneral: PropTypes.func.isRequired,
+  onChangeActions: PropTypes.func.isRequired,
 };
 
-const EditScreen = ({ sheet: { details, actions } }) => (
+const mapStateToProps = state => ({
+  general: state.general,
+  schedule: state.schedule,
+  requirements: state.requirements,
+  additionalDetails: state.additionalDetails,
+  actions: state.actions,
+});
+
+const mapDispatchToProps = dispatch => ({
+  onChangeGeneral: (field, value) => dispatch(updateFieldGeneral(field, value)),
+  onChangeActions: (id, field, value) => dispatch(updateFieldActions(id, field, value)),
+});
+
+const EditScreen = ({ general, actions, onChangeGeneral, onChangeActions }) => (
   <div className={styles.editScreen}>
-    <h2 className={styles.title}>{details.general.title}</h2>
+    <h2 className={styles.title}>{general.title}</h2>
     <div className={styles.editContainer}>
       <GeneralBox
-        fields={details.general}
+        fields={general}
+        onChange={onChangeGeneral}
       />
 
       {
@@ -49,6 +68,7 @@ const EditScreen = ({ sheet: { details, actions } }) => (
             fields={action.fields}
             key={action.id}
             id={action.id}
+            onChange={onChangeActions}
           />
         ))
       }
@@ -58,4 +78,7 @@ const EditScreen = ({ sheet: { details, actions } }) => (
 
 EditScreen.propTypes = propTypes;
 
-export default EditScreen;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(EditScreen);

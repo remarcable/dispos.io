@@ -6,12 +6,13 @@ import EditField from './EditField';
 const propTypes = {
   fields: PropTypes.object.isRequired,
   title: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
-const EditBox = ({ fields, title }) => {
-  // Transforms { myKey: 'myValue' } to [{ label: 'myKey', value: 'myValue'}]
+const EditBox = ({ fields, title, onChange }) => {
+  // Transforms { myKey: 'myValue' } to [{ key: 'myKey', value: 'myValue'}]
   const transformedFields = Object.keys(fields).map(
-    fieldName => ({ label: fieldName, value: fields[fieldName] })
+    fieldName => ({ key: fieldName, value: fields[fieldName] })
   );
 
   return (
@@ -21,10 +22,10 @@ const EditBox = ({ fields, title }) => {
         {
           transformedFields.map(field => (
             <EditField
-              key={field.label}
-              label={field.label}
+              key={field.key}
+              label={field.key}
               value={field.value}
-              onChange={console.log}
+              onChange={val => onChange(field.key, val)}
             />
           ))
         }
