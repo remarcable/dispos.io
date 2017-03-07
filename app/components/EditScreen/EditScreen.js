@@ -55,7 +55,7 @@ const mapDispatchToProps = dispatch => ({
 
 const EditScreen = ({ general, actions, onChangeGeneral, onChangeActions }) => (
   <div className={styles.editScreen}>
-    <h2 className={styles.title}>{general.title}</h2>
+    <h2 className={styles.title}>{general.title || 'My Dispo'}</h2>
     <div className={styles.editContainer}>
       <GeneralBox
         fields={general}
