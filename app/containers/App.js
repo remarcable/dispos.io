@@ -32,11 +32,11 @@ const App = ({ editMode }) => (
     >
       {editMode
       ? <div key="editScreen" style={{ width: '100%', height: '100%' }}>
-          <EditScreen />
-        </div>
+        <EditScreen />
+      </div>
       : <div key="startScreen" style={{ width: '100%', height: '100%' }}>
-          <StartScreen />
-        </div>
+        <StartScreen />
+      </div>
     }
     </ReactCSSTransitionGroup>
   </div>

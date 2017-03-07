@@ -39,7 +39,8 @@ export default class EditField extends Component {
 
     return (
       <div className={styles.wrapper}>
-        <h4
+
+        <h4 // eslint-disable-line jsx-a11y/no-static-element-interactions
           className={labelClassNames}
           onClick={this.handleOnLabelClick}
         >
