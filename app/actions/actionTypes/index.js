@@ -1,1 +1,10 @@
+export const SET_GENERAL = 'SET_GENERAL';
+export const SET_SCHEDULE = 'SET_SCHEDULE';
+export const SET_REQUIREMENTS = 'SET_REQUIREMENTS';
+export const SET_ADDITIONAL_DETAILS = 'SET_ADDITIONAL_DETAILS';
+export const SET_ACTIONS = 'SET_ACTIONS';
+
+export const UPDATE_FIELD = 'UPDATE_FIELD';
+
 export const SET_SHEET = 'SET_SHEET';
+export const RESET_SHEET = 'RESET_SHEET';
