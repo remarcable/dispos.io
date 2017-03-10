@@ -9,9 +9,9 @@ import {
 
 import styles from './EditScreen.css';
 
-import GeneralCard from '../EditCard/GeneralCard';
-import ScheduleCard from '../EditCard/ScheduleCard';
-import ActCard from '../EditCard/ActCard';
+import GeneralCard from './EditCard/GeneralCard';
+import ScheduleCard from './EditCard/ScheduleCard';
+import ActCard from './EditCard/ActCard';
 
 const propTypes = {
   general: PropTypes.shape({
