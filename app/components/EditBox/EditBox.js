@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import styles from './EditBox.css';
 
-import EditField from './EditField';
+import TextField from './InputFields/TextField/TextField';
 
 const propTypes = {
   fields: PropTypes.object.isRequired,
@@ -21,7 +21,8 @@ const EditBox = ({ fields, title, onChange }) => {
       <div>
         {
           transformedFields.map(field => (
-            <EditField
+            <TextField
+              isMultiLine
               key={field.key}
               label={field.key}
               value={field.value}

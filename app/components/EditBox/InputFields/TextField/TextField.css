@@ -1,0 +1,25 @@
+/*
+  Edge case: There is a problem with the autoresize mechanism of <AutosizeTextarea />.
+  If the stylesheets aren't loaded yet then the height of the textarea is going to wrong.
+*/
+
+.textarea {
+  width: 75%;
+  margin: 0;
+  margin-bottom: .5em;
+  border: 0;
+  font-family: "Space Mono", monospace;
+  font-size: 1em;
+  letter-spacing: 3px;
+  resize: none;
+}
+
+.textarea:focus {
+  /* The no-outline-problem is solved via JS (see .activeLabel) */
+  outline: 0;
+}
+
+.textarea::selection {
+  color: #fff;
+  background: #008cba;
+}

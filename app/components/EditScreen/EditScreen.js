@@ -3,12 +3,14 @@ import { connect } from 'react-redux';
 
 import {
   updateFieldGeneral,
+  updateFieldSchedule,
   updateFieldActions,
 } from '../../actions';
 
 import styles from './EditScreen.css';
 
 import GeneralBox from '../EditBox/GeneralBox';
+import ScheduleBox from '../EditBox/ScheduleBox';
 import ActBox from '../EditBox/ActBox';
 
 const propTypes = {
@@ -37,6 +39,7 @@ const propTypes = {
     }).isRequired,
   ).isRequired,
   onChangeGeneral: PropTypes.func.isRequired,
+  onChangeSchedule: PropTypes.func.isRequired,
   onChangeActions: PropTypes.func.isRequired,
 };
 
@@ -50,30 +53,41 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   onChangeGeneral: (field, value) => dispatch(updateFieldGeneral(field, value)),
+  onChangeSchedule: (field, value) => dispatch(updateFieldSchedule(field, value)),
   onChangeActions: (id, field, value) => dispatch(updateFieldActions(id, field, value)),
 });
 
-const EditScreen = ({ general, actions, onChangeGeneral, onChangeActions }) => (
-  <div className={styles.editScreen}>
-    <h2 className={styles.title}>{general.title || 'My Dispo'}</h2>
-    <div className={styles.editContainer}>
-      <GeneralBox
-        fields={general}
-        onChange={onChangeGeneral}
-      />
+const EditScreen = ({
+  general,
+  schedule,
+  actions,
+  onChangeGeneral,
+  onChangeSchedule,
+  onChangeActions }) => (
+    <div className={styles.editScreen}>
+      <h2 className={styles.title}>{general.title || 'My Dispo'}</h2>
+      <div className={styles.editContainer}>
+        <GeneralBox
+          fields={general}
+          onChange={onChangeGeneral}
+        />
+        <ScheduleBox
+          fields={schedule}
+          onChange={onChangeSchedule}
+        />
 
-      {
-        actions.map(action => (
-          <ActBox
-            fields={action.fields}
-            key={action.id}
-            id={action.id}
-            onChange={onChangeActions}
-          />
-        ))
-      }
+        {
+          actions.map(action => (
+            <ActBox
+              fields={action.fields}
+              key={action.id}
+              id={action.id}
+              onChange={onChangeActions}
+            />
+          ))
+        }
+      </div>
     </div>
-  </div>
 );
 
 EditScreen.propTypes = propTypes;
