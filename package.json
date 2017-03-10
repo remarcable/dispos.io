@@ -165,8 +165,10 @@
   "dependencies": {
     "classnames": "^2.2.5",
     "electron-debug": "^1.1.0",
+    "moment": "^2.17.1",
     "react": "^15.4.2",
     "react-addons-css-transition-group": "^15.4.2",
+    "react-datetime": "^2.8.8",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.2",
     "react-textarea-autosize": "^4.0.5",
