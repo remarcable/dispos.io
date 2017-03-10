@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import styles from './EditBox.css';
+import styles from './EditCard.css';
 
 import TextField from './InputFields/TextField/TextField';
 
@@ -9,15 +9,15 @@ const propTypes = {
   onChange: PropTypes.func.isRequired,
 };
 
-const EditBox = ({ fields, title, onChange }) => {
+const EditCard = ({ fields, title, onChange }) => {
   // Transforms { myKey: 'myValue' } to [{ key: 'myKey', value: 'myValue'}]
   const transformedFields = Object.keys(fields).map(
     fieldName => ({ key: fieldName, value: fields[fieldName] })
   );
 
   return (
-    <div className={styles.boxWrapper}>
-      <h3 className={styles.boxTitle}>{title}</h3>
+    <div className={styles.cardWrapper}>
+      <h3 className={styles.cardTitle}>{title}</h3>
       <div>
         {
           transformedFields.map(field => (
@@ -35,6 +35,6 @@ const EditBox = ({ fields, title, onChange }) => {
   );
 };
 
-EditBox.propTypes = propTypes;
+EditCard.propTypes = propTypes;
 
-export default EditBox;
+export default EditCard;

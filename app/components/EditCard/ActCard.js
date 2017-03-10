@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
-import EditBox from './EditBox';
+import EditCard from './EditCard';
 
-import styles from './EditBox.css';
+import styles from './EditCard.css';
 
 const propTypes = {
   fields: PropTypes.object.isRequired,
@@ -9,13 +9,13 @@ const propTypes = {
   onChange: PropTypes.func.isRequired,
 };
 
-const ActBox = ({ fields, id, onChange }) => {
+const ActCard = ({ fields, id, onChange }) => {
   const title = `Act #${id}`;
   const index = id - 1;
 
   return (
-    <div className={styles.actBox}>
-      <EditBox
+    <div className={styles.actCard}>
+      <EditCard
         title={title}
         fields={fields}
         onChange={(field, value) => onChange(index, field, value)}
@@ -24,6 +24,6 @@ const ActBox = ({ fields, id, onChange }) => {
   );
 };
 
-ActBox.propTypes = propTypes;
+ActCard.propTypes = propTypes;
 
-export default ActBox;
+export default ActCard;

@@ -1,16 +1,16 @@
 import React, { PropTypes } from 'react';
-import EditBox from './EditBox';
+import EditCard from './EditCard';
 
-import styles from './EditBox.css';
+import styles from './EditCard.css';
 
 const propTypes = {
   fields: PropTypes.object.isRequired,
   onChange: PropTypes.func.isRequired,
 };
 
-const ScheduleBox = ({ fields, onChange }) => (
-  <div className={styles.generalBox}>
-    <EditBox
+const ScheduleCard = ({ fields, onChange }) => (
+  <div className={styles.generalCard}>
+    <EditCard
       title={'Schedule'}
       fields={fields}
       onChange={(field, value) => onChange(field, value)}
@@ -18,6 +18,6 @@ const ScheduleBox = ({ fields, onChange }) => (
   </div>
 );
 
-ScheduleBox.propTypes = propTypes;
+ScheduleCard.propTypes = propTypes;
 
-export default ScheduleBox;
+export default ScheduleCard;

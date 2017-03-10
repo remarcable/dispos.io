@@ -9,9 +9,9 @@ import {
 
 import styles from './EditScreen.css';
 
-import GeneralBox from '../EditBox/GeneralBox';
-import ScheduleBox from '../EditBox/ScheduleBox';
-import ActBox from '../EditBox/ActBox';
+import GeneralCard from '../EditCard/GeneralCard';
+import ScheduleCard from '../EditCard/ScheduleCard';
+import ActCard from '../EditCard/ActCard';
 
 const propTypes = {
   general: PropTypes.shape({
@@ -67,18 +67,18 @@ const EditScreen = ({
     <div className={styles.editScreen}>
       <h2 className={styles.title}>{general.title || 'My Dispo'}</h2>
       <div className={styles.editContainer}>
-        <GeneralBox
+        <GeneralCard
           fields={general}
           onChange={onChangeGeneral}
         />
-        <ScheduleBox
+        <ScheduleCard
           fields={schedule}
           onChange={onChangeSchedule}
         />
 
         {
           actions.map(action => (
-            <ActBox
+            <ActCard
               fields={action.fields}
               key={action.id}
               id={action.id}

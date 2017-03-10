@@ -1,16 +1,16 @@
 import React, { PropTypes } from 'react';
-import EditBox from './EditBox';
+import EditCard from './EditCard';
 
-import styles from './EditBox.css';
+import styles from './EditCard.css';
 
 const propTypes = {
   fields: PropTypes.object.isRequired,
   onChange: PropTypes.func.isRequired,
 };
 
-const GeneralBox = ({ fields, onChange }) => (
-  <div className={styles.generalBox}>
-    <EditBox
+const GeneralCard = ({ fields, onChange }) => (
+  <div className={styles.generalCard}>
+    <EditCard
       title={'General'}
       fields={fields}
       onChange={(field, value) => onChange(field, value)}
@@ -18,6 +18,6 @@ const GeneralBox = ({ fields, onChange }) => (
   </div>
 );
 
-GeneralBox.propTypes = propTypes;
+GeneralCard.propTypes = propTypes;
 
-export default GeneralBox;
+export default GeneralCard;
