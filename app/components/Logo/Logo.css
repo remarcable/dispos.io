@@ -5,12 +5,12 @@
 
 .bigLogo {
   composes: logo;
-  font-size: 64px;
+  font-size: 4em;
 }
 
 .headerLogo {
   composes: logo;
-  font-size: 24px;
+  font-size: 1.5em;
 }
 
 .logoWrapper {
