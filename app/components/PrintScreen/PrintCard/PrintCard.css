@@ -1,0 +1,60 @@
+.tableWrapper {
+  display: flex;
+  justify-content: center;
+  break-inside: avoid-page;
+}
+
+.printTable {
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
+  font-size: 0.75em;
+  margin-bottom: 2em;
+}
+
+.printTable td:nth-child(1) {
+  width: 10%
+}
+
+.printTable td:nth-child(2) {
+  width: 55%
+}
+
+.printTable td:nth-child(3) {
+  width: 20%
+}
+
+.printTable td:nth-child(4) {
+  width: 15%
+}
+
+.printTable td, .printTable tr {
+  border: 1px solid #000;
+}
+
+.printTable tr {
+  height: 100px;
+}
+
+.printTable td {
+  padding: 10px;
+}
+
+.requirements, .artist, .details, .title, .title span {
+  vertical-align: top;
+  overflow-wrap: break-word;
+}
+
+.id {
+  text-align: center;
+  vertical-align: middle;
+  font-size: 1.75em;
+}
+
+.title {
+  font-size: 1.75em;
+}
+
+.title span {
+  font-size: 0.75rem;
+}
