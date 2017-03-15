@@ -1,0 +1,16 @@
+body {
+  counter-reset: page;
+}
+
+@page {
+  size: A4;
+  margin: auto;
+}
+
+@media print {
+  body {
+    -webkit-print-color-adjust: exact;
+    width: auto;
+    height: auto;
+  }
+}
