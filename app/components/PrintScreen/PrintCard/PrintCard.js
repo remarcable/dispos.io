@@ -12,17 +12,27 @@ const propTypes = {
 };
 
 const PrintCard = ({ id, title, description, length, artist, requirements }) => (
-  <div className={styles.tableWrapper}>
-    <table className={styles.printTable}>
+  <div className={styles.printCardWrapper}>
+    <table className={styles.printCard}>
       <tbody>
-        <tr>
-          <td className={styles.id}>#{id}</td>
-          <td className={styles.title}>{title} <br /> <span>{description}</span></td>
-          <td className={styles.requirements}>{requirements}</td>
-          <td className={styles.artist}>{artist}</td>
+        <tr className={styles.topRow}>
+          <td>{length}</td>
+          <td />
+          <td>start 19:05</td>
+          <td>end 19:08</td>
         </tr>
         <tr>
-          <td colSpan="4" className={styles.details}>This is a very funny detail, just in case.</td>
+          <td className={styles.id}>#{id}</td>
+          <td className={styles.title}>
+            {title}
+            <br />
+            <span className={styles.description}>{description}</span>
+          </td>
+          <td>{requirements}</td>
+          <td>{artist}</td>
+        </tr>
+        <tr>
+          <td colSpan="4" />
         </tr>
       </tbody>
     </table>

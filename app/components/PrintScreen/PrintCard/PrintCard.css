@@ -1,48 +1,42 @@
-.tableWrapper {
+.printCardWrapper {
   display: flex;
   justify-content: center;
   break-inside: avoid-page;
 }
 
-.printTable {
-  border-collapse: collapse;
-  table-layout: fixed;
+.printCard {
   width: 100%;
+  margin-bottom: 20px;
+  table-layout: fixed;
+  border-collapse: collapse;
   font-size: 0.75em;
-  margin-bottom: 2em;
+  overflow-wrap: break-word;
 }
 
-.printTable td:nth-child(1) {
-  width: 10%
-}
+.printCard td:nth-child(1) { width: 10%; }
+.printCard td:nth-child(2) { width: 55%; }
+.printCard td:nth-child(3) { width: 20%; }
+.printCard td:nth-child(4) { width: 15%; }
 
-.printTable td:nth-child(2) {
-  width: 55%
-}
-
-.printTable td:nth-child(3) {
-  width: 20%
-}
-
-.printTable td:nth-child(4) {
-  width: 15%
-}
-
-.printTable td, .printTable tr {
+.printCard td, .printCard tr {
   border: 1px solid #000;
 }
 
-.printTable tr {
+.printCard tr {
   height: 100px;
 }
 
-.printTable td {
+.printCard td {
   padding: 10px;
+  vertical-align: top;
 }
 
-.requirements, .artist, .details, .title, .title span {
-  vertical-align: top;
-  overflow-wrap: break-word;
+.printCard .topRow { height: 20px; }
+
+.printCard .topRow td {
+  padding: 0;
+  border: 0;
+  text-align: center;
 }
 
 .id {
@@ -55,6 +49,7 @@
   font-size: 1.75em;
 }
 
-.title span {
+.description {
   font-size: 0.75rem;
+  vertical-align: top;
 }
