@@ -1,0 +1,19 @@
+.pageNumberWrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* For easier debugging */
+}
+
+.pageNumber {
+  width: 100%;
+  height: 100%;
+}
+
+.pageNumber::after {
+  content: counter(page);
+  counter-increment: page;
+  display: flex;
+  justify-content: flex-end;
+  font-size: 12px;
+}
