@@ -1,3 +1,4 @@
+import { ipcRenderer } from 'electron';
 import {
   SET_SHEET,
   RESET_SHEET,
@@ -12,16 +13,15 @@ import {
 } from './setters';
 
 import * as empty from './empty';
-import * as example from './example';
 
 export function setSheet(general, schedule, requirements, additionalDetails, actions) {
   return dispatch => {
-    dispatch({ type: SET_SHEET });
     dispatch(setGeneral(general));
     dispatch(setSchedule(schedule));
     dispatch(setRequirements(requirements));
     dispatch(setAdditionalDetails(additionalDetails));
     dispatch(setActions(actions));
+    dispatch({ type: SET_SHEET });
   };
 }
 
@@ -29,9 +29,12 @@ export function resetSheet() {
   return { type: RESET_SHEET };
 }
 
-export function setExampleSheet() {
-  const { general, schedule, requirements, additionalDetails, actions } = example;
-  return setSheet(general, schedule, requirements, additionalDetails, actions);
+export function openFile() {
+  return () => {
+    setTimeout(() => {
+      ipcRenderer.send('show-open-file');
+    }, 200); // To make buttons appear snappier
+  };
 }
 
 export function setEmptySheet() {

@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import 'typeface-space-mono/index.css';
 
+import IpcReciever from './IpcReciever';
+
 import HeaderLogo from '../components/Logo/HeaderLogo';
 import DragBar from '../components/DragBar/DragBar';
 
@@ -47,6 +49,7 @@ const App = ({ editMode, printMode }) => {
 
   return (
     <div>
+      <IpcReciever />
       <DragBar />
       <HeaderLogo shouldShow={editMode} />
       <ReactCSSTransitionGroup

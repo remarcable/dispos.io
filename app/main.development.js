@@ -1,5 +1,6 @@
-import { app, BrowserWindow, Menu, shell } from 'electron';
+import { app, BrowserWindow, Menu, shell, ipcMain } from 'electron';
 
+import openFile from './utils/openFile';
 import './utils/createPdf';
 
 let menu;
@@ -118,13 +119,13 @@ app.on('ready', async () => {
         label: 'New...',
         accelerator: 'Command+N',
         click() {
-          console.log('New...')
+          mainWindow.webContents.send('new-file');
         },
       }, {
         label: 'Open...',
         accelerator: 'Command+O',
         click() {
-          console.log('Open...');
+          openFile(mainWindow);
         },
       }, {
         type: 'separator'
@@ -132,13 +133,13 @@ app.on('ready', async () => {
         label: 'Close',
         accelerator: 'Command+W',
         click() {
-          console.log('Close');
+          mainWindow.webContents.send('close-file');
         },
       }, {
         label: 'Save',
         accelerator: 'Command+S',
         click() {
-          console.log('Save');
+          mainWindow.webContents.send('save-file');
         },
       }, {
         label: 'Duplicate',
@@ -326,3 +327,5 @@ app.on('ready', async () => {
     mainWindow.setMenu(menu);
   }
 });
+
+ipcMain.on('show-open-file', () => openFile(mainWindow));

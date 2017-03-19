@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import BigLogo from '../Logo/BigLogo';
 import styles from './StartScreen.css';
 
-import { setEmptySheet, setExampleSheet } from '../../actions';
+import { setEmptySheet, openFile } from '../../actions';
 
 const propTypes = {
   newFile: PropTypes.func.isRequired,
@@ -12,7 +12,7 @@ const propTypes = {
 
 const mapDispatchToProps = dispatch => ({
   newFile: () => dispatch(setEmptySheet()),
-  openFile: () => dispatch(setExampleSheet()),
+  openFile: () => dispatch(openFile()),
 });
 
 const StartScreen = ({ newFile, openFile }) => (
