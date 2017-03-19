@@ -17,6 +17,7 @@
 
 .title {
   position: sticky;
+  z-index: 500;
   top: 0;
   box-sizing: border-box;
   width: 100%;

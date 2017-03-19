@@ -6,6 +6,7 @@ import {
   updateFieldSchedule,
   updateFieldActions,
   addAction,
+  removeAction,
 } from '../../actions';
 
 import styles from './EditScreen.css';
@@ -32,7 +33,7 @@ const propTypes = {
   }).isRequired,
   actions: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number.isRequired,
+      id: PropTypes.string.isRequired,
       fields: PropTypes.shape(
         PropTypes.shape({
           label: PropTypes.string.isRequired,
@@ -45,6 +46,7 @@ const propTypes = {
   onChangeSchedule: PropTypes.func.isRequired,
   onChangeActions: PropTypes.func.isRequired,
   handleAddAction: PropTypes.func.isRequired,
+  onRemoveAction: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -60,6 +62,7 @@ const mapDispatchToProps = dispatch => ({
   onChangeSchedule: (field, value) => dispatch(updateFieldSchedule(field, value)),
   onChangeActions: (id, field, value) => dispatch(updateFieldActions(id, field, value)),
   handleAddAction: () => dispatch(addAction()),
+  onRemoveAction: (index) => dispatch(removeAction(index)),
 });
 
 const EditScreen = ({
@@ -69,7 +72,8 @@ const EditScreen = ({
   onChangeGeneral,
   onChangeSchedule,
   onChangeActions,
-  handleAddAction }) => (
+  handleAddAction,
+  onRemoveAction }) => (
     <div className={styles.editScreen}>
       <h2 className={styles.title}>{general.title || 'My Dispo'}</h2>
       <div className={styles.editContainer}>
@@ -83,12 +87,14 @@ const EditScreen = ({
         />
 
         {
-          actions.map(action => (
+          actions.map((action, index) => (
             <ActCard
               fields={action.fields}
               key={action.id}
               id={action.id}
+              index={index}
               onChange={onChangeActions}
+              removeCard={() => onRemoveAction(index)}
             />
           ))
         }

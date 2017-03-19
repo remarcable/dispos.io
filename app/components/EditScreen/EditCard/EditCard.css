@@ -1,4 +1,5 @@
 .cardWrapper {
+  position: relative;
   width: 100%;
   height: 100%;
   box-sizing: border-box;
@@ -15,6 +16,11 @@
 .actCard {
   /* magic number: The outside of the box should be on same x as text of "small" box below */
   width: 95%;
+  counter-increment: act;
+}
+
+.countedAct::after {
+  content: " " counter(act);
 }
 
 .cardTitle {
@@ -24,4 +30,10 @@
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 5px;
+}
+
+.closeButton {
+  position: absolute;
+  top: 1.5em;
+  right: 1.5em;
 }

@@ -5,6 +5,7 @@ export const SET_ADDITIONAL_DETAILS = 'SET_ADDITIONAL_DETAILS';
 export const SET_ACTIONS = 'SET_ACTIONS';
 
 export const ADD_ACTION = 'ADD_ACTION';
+export const REMOVE_ACTION = 'REMOVE_ACTION';
 
 export const UPDATE_FIELD = 'UPDATE_FIELD';
 

@@ -3,7 +3,6 @@ import React, { PropTypes } from 'react';
 import styles from './PrintCard.css';
 
 const propTypes = {
-  id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   artist: PropTypes.string.isRequired,
@@ -11,7 +10,7 @@ const propTypes = {
   length: PropTypes.string.isRequired,
 };
 
-const PrintCard = ({ id, title, description, length, artist, requirements }) => (
+const PrintCard = ({ title, description, length, artist, requirements }) => (
   <div className={styles.printCardWrapper}>
     <table className={styles.printCard}>
       <tbody>
@@ -22,7 +21,7 @@ const PrintCard = ({ id, title, description, length, artist, requirements }) => 
           <td>end 19:08</td>
         </tr>
         <tr>
-          <td className={styles.id}>#{id}</td>
+          <td className={styles.id}>#</td>
           <td className={styles.title}>
             {title}
             <br />

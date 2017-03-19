@@ -5,20 +5,22 @@ import styles from './EditCard.css';
 
 const propTypes = {
   fields: PropTypes.object.isRequired,
-  id: PropTypes.number.isRequired,
+  index: PropTypes.number.isRequired,
   onChange: PropTypes.func.isRequired,
+  removeCard: PropTypes.func.isRequired,
 };
 
-const ActCard = ({ fields, id, onChange }) => {
-  const title = `Act #${id}`;
-  const index = id - 1;
+const ActCard = ({ fields, index, onChange, removeCard }) => {
+  const title = <span className={styles.countedAct}>Act</span>;
 
   return (
     <div className={styles.actCard}>
       <EditCard
         title={title}
+        showCloseButton
         fields={fields}
         onChange={(field, value) => onChange(index, field, value)}
+        removeCard={removeCard}
       />
     </div>
   );

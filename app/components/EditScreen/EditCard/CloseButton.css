@@ -1,0 +1,15 @@
+.close {
+  border: 0;
+  background-color: transparent;
+  color: #BBBCC7;
+  cursor: pointer;
+}
+
+.close:focus {
+  outline: 0;
+  color: #a5a6af;
+}
+
+.close:active {
+  color: #008cba;
+}

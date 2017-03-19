@@ -1,6 +1,7 @@
 import {
   SET_ACTIONS,
   ADD_ACTION,
+  REMOVE_ACTION,
   UPDATE_FIELD,
   RESET_SHEET,
 } from '../actions';
@@ -15,13 +16,12 @@ export default function actions(state = initialState, action = {}) {
       ];
     }
     case ADD_ACTION: {
-      const currentLength = state.length;
       const details = action.details || {};
 
       return [
         ...state,
         {
-          id: currentLength + 1,
+          id: details.id,
           fields: {
             title: details.title || '',
             description: details.description || '',
@@ -30,6 +30,12 @@ export default function actions(state = initialState, action = {}) {
             requirements: details.requirements || '',
           },
         }
+      ];
+    }
+    case REMOVE_ACTION: {
+      return [
+        ...state.slice(0, action.index),
+        ...state.slice(action.index + 1),
       ];
     }
     case UPDATE_FIELD: {

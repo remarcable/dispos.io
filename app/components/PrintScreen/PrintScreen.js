@@ -26,7 +26,7 @@ const propTypes = {
   }).isRequired,
   actions: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number.isRequired,
+      id: PropTypes.string.isRequired,
       fields: PropTypes.shape(
         PropTypes.shape({
           label: PropTypes.string.isRequired,
@@ -60,7 +60,6 @@ const PrintScreen = ({
           actions.map((action) => (
             <PrintCard
               key={action.id}
-              id={action.id}
               title={action.fields.title}
               description={action.fields.description}
               length={action.fields.length}

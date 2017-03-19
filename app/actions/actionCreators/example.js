@@ -26,7 +26,7 @@ export const additionalDetails = {
 
 export const actions = [
   {
-    id: 1,
+    id: 'RANDOMKEY01',
     fields: {
       title: 'Gravity',
       description: 'Song von Sara Bareilles',
@@ -36,7 +36,7 @@ export const actions = [
     },
   },
   {
-    id: 2,
+    id: 'RANDOMKEY02',
     fields: {
       title: 'Imagine',
       description: 'Song von John Lennon',
@@ -46,7 +46,7 @@ export const actions = [
     },
   },
   {
-    id: 3,
+    id: 'RANDOMKEY03',
     fields: {
       title: 'Probleme',
       description: 'Das ist echte Lyrik.',

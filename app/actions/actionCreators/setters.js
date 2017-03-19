@@ -1,3 +1,5 @@
+import randomize from 'randomatic';
+
 import {
   SET_GENERAL,
   SET_SCHEDULE,
@@ -5,6 +7,7 @@ import {
   SET_ADDITIONAL_DETAILS,
   SET_ACTIONS,
   ADD_ACTION,
+  REMOVE_ACTION,
 } from '../actionTypes';
 
 export function setGeneral(general) {
@@ -28,5 +31,11 @@ export function setActions(actions) {
 }
 
 export function addAction(action) {
-  return { type: ADD_ACTION, details: action };
+  // Add a random id for Reacts requirement to add a 'key' in order to work properly
+  const id = randomize('A0', 10);
+  return { type: ADD_ACTION, details: { ...action, id } };
+}
+
+export function removeAction(actionIndex) {
+  return { type: REMOVE_ACTION, index: actionIndex };
 }

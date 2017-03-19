@@ -6,15 +6,13 @@ const propTypes = {
   handleOnClick: PropTypes.func.isRequired,
 };
 
-const AddCard = ({ handleOnClick }) => {
-  return (
-    <button className={styles.addAct} onClick={handleOnClick}>
-      <div>
-        <PlusSymbol /> Add
-      </div>
-    </button>
+const AddCard = ({ handleOnClick }) => (
+  <button className={styles.addAct} onClick={handleOnClick}>
+    <div>
+      <PlusSymbol /> Add
+    </div>
+  </button>
   );
-};
 
 const PlusSymbol = () => (
   <span className={styles.plus}><span>+</span></span>
