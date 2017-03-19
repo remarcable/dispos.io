@@ -113,6 +113,53 @@ app.on('ready', async () => {
         }
       }]
     }, {
+      label: 'File',
+      submenu: [{
+        label: 'New...',
+        accelerator: 'Command+N',
+        click() {
+          console.log('New...')
+        },
+      }, {
+        label: 'Open...',
+        accelerator: 'Command+O',
+        click() {
+          console.log('Open...');
+        },
+      }, {
+        type: 'separator'
+      }, {
+        label: 'Close',
+        accelerator: 'Command+W',
+        click() {
+          console.log('Close');
+        },
+      }, {
+        label: 'Save',
+        accelerator: 'Command+S',
+        click() {
+          console.log('Save');
+        },
+      }, {
+        label: 'Duplicate',
+        accelerator: 'Shift+Command+S',
+        click() {
+          console.log('Duplicate');
+        },
+      }, {
+        label: 'Export to PDF',
+        accelerator: 'Shift+Command+P',
+        click() {
+          console.log('Export to PDF');
+        },
+      }, {
+        label: 'Print',
+        accelerator: 'Command+P',
+        click() {
+          console.log('Print');
+        },
+      }]
+    }, {
       label: 'Edit',
       submenu: [{
         label: 'Undo',
