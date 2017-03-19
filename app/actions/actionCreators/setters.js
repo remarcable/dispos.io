@@ -4,6 +4,7 @@ import {
   SET_REQUIREMENTS,
   SET_ADDITIONAL_DETAILS,
   SET_ACTIONS,
+  ADD_ACTION,
 } from '../actionTypes';
 
 export function setGeneral(general) {
@@ -24,4 +25,8 @@ export function setAdditionalDetails(additionalDetails) {
 
 export function setActions(actions) {
   return { type: SET_ACTIONS, details: actions };
+}
+
+export function addAction(action) {
+  return { type: ADD_ACTION, details: action };
 }

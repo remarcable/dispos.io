@@ -1,5 +1,6 @@
 import {
   SET_ACTIONS,
+  ADD_ACTION,
   UPDATE_FIELD,
   RESET_SHEET,
 } from '../actions';
@@ -11,6 +12,24 @@ export default function actions(state = initialState, action = {}) {
     case SET_ACTIONS: {
       return [
         ...action.details,
+      ];
+    }
+    case ADD_ACTION: {
+      const currentLength = state.length;
+      const details = action.details || {};
+
+      return [
+        ...state,
+        {
+          id: currentLength + 1,
+          fields: {
+            title: details.title || '',
+            description: details.description || '',
+            length: details.length || '',
+            artist: details.artist || '',
+            requirements: details.requirements || '',
+          },
+        }
       ];
     }
     case UPDATE_FIELD: {
