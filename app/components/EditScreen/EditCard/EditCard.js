@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import styles from './EditCard.css';
 
 import TextField from './InputFields/TextField/TextField';
-import CloseButton from './CloseButton';
+import CloseButton from './CloseButton/CloseButton';
 
 const propTypes = {
   fields: PropTypes.object.isRequired,
