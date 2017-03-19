@@ -2,8 +2,24 @@ import { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
 import { ipcRenderer } from 'electron';
-import { readFile as readJSONFile } from 'jsonfile';
+import { readFile as readJSONFile, writeFile as writeJSONFile } from 'jsonfile';
 import { setSheet, setEmptySheet } from '../actions';
+
+const propTypes = {
+  appData: PropTypes.object,
+  dispatchSetEmptySheet: PropTypes.func.isRequired,
+  dispatchSetSheet: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = state => ({
+  appData: {
+    general: { ...state.general },
+    schedule: { ...state.schedule },
+    requirements: { ...state.requirements },
+    additionalDetails: { ...state.additionalDetails },
+    actions: { ...state.actions },
+  },
+});
 
 const mapDispatchToProps = dispatch => ({
   dispatchSetSheet: (
@@ -16,17 +32,13 @@ const mapDispatchToProps = dispatch => ({
   dispatchSetEmptySheet: () => dispatch(setEmptySheet()),
 });
 
-const propTypes = {
-  dispatchSetEmptySheet: PropTypes.func.isRequired,
-  dispatchSetSheet: PropTypes.func.isRequired,
-};
-
 class IpcReciever extends Component {
   constructor() {
     super();
 
     this.componentDidMount = this.componentDidMount.bind(this);
     this.componentWillUnmount = this.componentWillUnmount.bind(this);
+    this.getAppData = this.getAppData.bind(this);
   }
 
   componentDidMount() {
@@ -46,11 +58,24 @@ class IpcReciever extends Component {
         dispatchSetSheet(general, schedule, requirements, additionalDetails, actions);
       });
     });
+
+    ipcRenderer.on('save-file', (e, filePath) => {
+      const appData = this.getAppData();
+      writeJSONFile(filePath, appData, (err) => {
+        if (err) {
+          console.log('myError', err);
+        }
+      });
+    });
   }
 
   componentWillUnmount() {
     ipcRenderer.removeListener('new-file');
     ipcRenderer.removeListener('open-file');
+  }
+
+  getAppData() {
+    return this.props.appData;
   }
 
   render() {
@@ -61,6 +86,6 @@ class IpcReciever extends Component {
 IpcReciever.propTypes = propTypes;
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps,
 )(IpcReciever);

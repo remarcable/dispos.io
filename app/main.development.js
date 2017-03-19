@@ -1,6 +1,7 @@
 import { app, BrowserWindow, Menu, shell, ipcMain } from 'electron';
 
 import openFile from './utils/openFile';
+import saveFile from './utils/saveFile';
 import './utils/createPdf';
 
 let menu;
@@ -139,7 +140,7 @@ app.on('ready', async () => {
         label: 'Save',
         accelerator: 'Command+S',
         click() {
-          mainWindow.webContents.send('save-file');
+          saveFile(mainWindow);
         },
       }, {
         label: 'Duplicate',
