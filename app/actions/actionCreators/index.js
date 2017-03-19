@@ -11,6 +11,7 @@ import {
   setActions,
 } from './setters';
 
+import * as empty from './empty';
 import * as example from './example';
 
 export function setSheet(general, schedule, requirements, additionalDetails, actions) {
@@ -30,6 +31,11 @@ export function resetSheet() {
 
 export function setExampleSheet() {
   const { general, schedule, requirements, additionalDetails, actions } = example;
+  return setSheet(general, schedule, requirements, additionalDetails, actions);
+}
+
+export function setEmptySheet() {
+  const { general, schedule, requirements, additionalDetails, actions } = empty;
   return setSheet(general, schedule, requirements, additionalDetails, actions);
 }
 
