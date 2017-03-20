@@ -87,7 +87,7 @@ app.on('ready', async () => {
     template = [{
       label: 'Electron',
       submenu: [{
-        label: 'About ElectronReact',
+        label: 'About dispos.io',
         selector: 'orderFrontStandardAboutPanel:'
       }, {
         type: 'separator'
@@ -97,7 +97,7 @@ app.on('ready', async () => {
       }, {
         type: 'separator'
       }, {
-        label: 'Hide ElectronReact',
+        label: 'Hide dispos.io',
         accelerator: 'Command+H',
         selector: 'hide:'
       }, {
