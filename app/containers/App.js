@@ -12,8 +12,6 @@ import StartScreen from '../components/StartScreen/StartScreen';
 import EditScreen from '../components/EditScreen/EditScreen';
 import PrintScreen from '../components/PrintScreen/PrintScreen';
 
-import transitions from './AppTransitions.css';
-
 const propTypes = {
   editMode: PropTypes.bool.isRequired,
 };
@@ -26,6 +24,7 @@ const App = ({ editMode }) => {
   const Body = () => (
     editMode ? (
       <div key="editScreen" style={{ width: '100%', height: '100%' }}>
+        <HeaderLogo shouldShow={editMode} />
         <EditScreen />
         <PrintScreen />
       </div>
@@ -41,16 +40,7 @@ const App = ({ editMode }) => {
     <div>
       <IpcReciever />
       <DragBar />
-      <HeaderLogo shouldShow={editMode} />
-      <ReactCSSTransitionGroup
-        transitionAppear
-        transitionName={transitions}
-        transitionAppearTimeout={800}
-        transitionEnterTimeout={500}
-        transitionLeaveTimeout={300}
-      >
-        {Body()}
-      </ReactCSSTransitionGroup>
+      {Body()}
     </div>
   );
 };
