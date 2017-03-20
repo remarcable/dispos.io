@@ -8,6 +8,8 @@ import {
   SET_ACTIONS,
   ADD_ACTION,
   REMOVE_ACTION,
+  SET_FILE_PATH,
+  RESET_FILE_PATH,
 } from '../actionTypes';
 
 export function setGeneral(general) {
@@ -38,4 +40,12 @@ export function addAction(action) {
 
 export function removeAction(actionIndex) {
   return { type: REMOVE_ACTION, index: actionIndex };
+}
+
+export function setFilePath(filePath) {
+  return { type: SET_FILE_PATH, filePath };
+}
+
+export function resetFilePath() {
+  return { type: RESET_FILE_PATH };
 }

@@ -1,8 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
-import { ipcRenderer } from 'electron';
-
 import Logo from '../Logo/Logo';
 import PrintCard from './PrintCard/PrintCard';
 import PrintLayout from './PrintLayout/PrintLayout';
@@ -73,8 +71,6 @@ const PrintScreen = ({
 );
 
 PrintScreen.propTypes = propTypes;
-
-window.printPdf = () => ipcRenderer.send('create-and-open-pdf');
 
 export default connect(
   mapStateToProps,

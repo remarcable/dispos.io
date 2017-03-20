@@ -11,3 +11,6 @@ export const UPDATE_FIELD = 'UPDATE_FIELD';
 
 export const SET_SHEET = 'SET_SHEET';
 export const RESET_SHEET = 'RESET_SHEET';
+
+export const SET_FILE_PATH = 'SET_FILE_PATH';
+export const RESET_FILE_PATH = 'RESET_FILE_PATH';

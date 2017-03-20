@@ -13,7 +13,7 @@ const PageNumbers = ({ howMany }) => (
     {/* See https://stackoverflow.com/questions/3746725/create-a-javascript-array-containing-1-n#answer-33352604 */}
     {
         [...Array(howMany).keys()].map((e, index) => (
-          <div key={index} className={styles.pageNumber} />
+          <div key={index} className={styles.pageNumber} /> // eslint-disable-line
       ))
       }
   </div>

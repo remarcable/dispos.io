@@ -2,7 +2,8 @@ import { app, BrowserWindow, Menu, shell, ipcMain } from 'electron';
 
 import openFile from './utils/openFile';
 import saveFile from './utils/saveFile';
-import './utils/createPdf';
+import pdfFile from './utils/pdfFile';
+import printFile from './utils/printFile';
 
 let menu;
 let template;
@@ -120,13 +121,13 @@ app.on('ready', async () => {
         label: 'New...',
         accelerator: 'Command+N',
         click() {
-          mainWindow.webContents.send('new-file');
+          mainWindow.webContents.send('request-new-file');
         },
       }, {
         label: 'Open...',
         accelerator: 'Command+O',
         click() {
-          openFile(mainWindow);
+          mainWindow.webContents.send('request-open-file');
         },
       }, {
         type: 'separator'
@@ -134,31 +135,31 @@ app.on('ready', async () => {
         label: 'Close',
         accelerator: 'Command+W',
         click() {
-          mainWindow.webContents.send('close-file');
+          mainWindow.webContents.send('request-close-file');
         },
       }, {
         label: 'Save',
         accelerator: 'Command+S',
         click() {
-          saveFile(mainWindow);
+          mainWindow.webContents.send('request-save-file');
         },
       }, {
         label: 'Duplicate',
         accelerator: 'Shift+Command+S',
         click() {
-          console.log('Duplicate');
+          mainWindow.webContents.send('request-duplicate-file');
         },
       }, {
         label: 'Export to PDF',
         accelerator: 'Shift+Command+P',
         click() {
-          console.log('Export to PDF');
+          mainWindow.webContents.send('request-export-to-pdf');
         },
       }, {
         label: 'Print',
         accelerator: 'Command+P',
         click() {
-          console.log('Print');
+          mainWindow.webContents.send('request-print');
         },
       }]
     }, {
@@ -329,4 +330,7 @@ app.on('ready', async () => {
   }
 });
 
-ipcMain.on('show-open-file', () => openFile(mainWindow));
+ipcMain.on('grant-open-file', () => openFile(mainWindow));
+ipcMain.on('grant-save-file', () => saveFile(mainWindow));
+ipcMain.on('grant-export-to-pdf', () => pdfFile(mainWindow));
+ipcMain.on('grant-print', () => printFile(mainWindow));

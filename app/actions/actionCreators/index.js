@@ -32,7 +32,7 @@ export function resetSheet() {
 export function openFile() {
   return () => {
     setTimeout(() => {
-      ipcRenderer.send('show-open-file');
+      ipcRenderer.send('grant-open-file');
     }, 200); // To make buttons appear snappier
   };
 }
