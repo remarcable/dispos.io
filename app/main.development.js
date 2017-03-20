@@ -54,6 +54,7 @@ app.on('ready', async () => {
     width: 1024,
     height: 728,
     titleBarStyle: 'hidden-inset',
+    autoHideMenuBar: true,
     backgroundColor: '#F4F5F8',
   });
 
@@ -265,13 +266,46 @@ app.on('ready', async () => {
     template = [{
       label: '&File',
       submenu: [{
+        label: '&New',
+        accelerator: 'Ctrl+N',
+        click() {
+          mainWindow.webContents.send('request-new-file');
+        }
+      }, {
         label: '&Open',
-        accelerator: 'Ctrl+O'
+        accelerator: 'Ctrl+O',
+        click() {
+          mainWindow.webContents.send('request-open-file');
+        }
       }, {
         label: '&Close',
         accelerator: 'Ctrl+W',
         click() {
-          mainWindow.close();
+          mainWindow.webContents.send('request-close-file');
+        }
+      }, {
+        label: '&Save',
+        accelerator: 'Ctrl+S',
+        click() {
+          mainWindow.webContents.send('request-save-file');
+        }
+      }, {
+        label: 'Sa&ve as...',
+        accelerator: 'Ctrl+Shift+S',
+        click() {
+          mainWindow.webContents.send('request-duplicate-file');
+        }
+      }, {
+        label: '&Export to PDF',
+        accelerator: 'Ctrl+Shift+P',
+        click() {
+          mainWindow.webContents.send('request-export-to-pdf');
+        }
+      }, {
+        label: '&Print',
+        accelerator: 'Ctrl+P',
+        click() {
+          mainWindow.webContents.send('request-print');
         }
       }]
     }, {
