@@ -23,6 +23,12 @@
   width: 100%;
 }
 
+@media print {
+  .logoWrapper {
+    display: none !important;
+  }
+}
+
 /* Targets the wrapping element of <ReactCSSTransitionGroup /> */
 .logoWrapper span {
   display: flex;

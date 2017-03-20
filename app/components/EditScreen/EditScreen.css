@@ -6,6 +6,12 @@
   flex-direction: column;
 }
 
+@media print {
+  .editScreen {
+    display: none !important;
+  }
+}
+
 .editContainer {
   width: 100%;
   max-width: 800px;

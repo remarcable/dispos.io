@@ -16,36 +16,26 @@ import transitions from './AppTransitions.css';
 
 const propTypes = {
   editMode: PropTypes.bool.isRequired,
-  printMode: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = state => ({
   editMode: state.editMode,
-  printMode: state.printMode,
 });
 
-const App = ({ editMode, printMode }) => {
-  const Body = () => {
-    if (editMode) {
-      return (
-        <div key="editScreen" style={{ width: '100%', height: '100%' }}>
-          <EditScreen />
-        </div>
-      );
-    } else if (printMode) {
-      return (
-        <div key="printScreen" style={{ width: '100%', height: '100%' }}>
-          <PrintScreen />
-        </div>
-      );
-    }
-
-    return (
+const App = ({ editMode }) => {
+  const Body = () => (
+    editMode ? (
+      <div key="editScreen" style={{ width: '100%', height: '100%' }}>
+        <EditScreen />
+        <PrintScreen />
+      </div>
+    )
+    : (
       <div key="startScreen" style={{ width: '100%', height: '100%' }}>
         <StartScreen />
       </div>
-    );
-  };
+    )
+  );
 
   return (
     <div>

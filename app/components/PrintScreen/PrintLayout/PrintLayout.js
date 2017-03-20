@@ -41,7 +41,7 @@ const PrintLayout = ({
   footer,
   pageNumberCount
 }) => (
-  <div>
+  <div className={styles.printLayoutWrapper}>
     <PageNumbers howMany={pageNumberCount} />
 
     <table className={styles.printLayout}>
