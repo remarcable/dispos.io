@@ -1,20 +1,19 @@
 .enter, .appear {
-  animation: slideIn .5s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  animation: slideIn .8s cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }
-
-.leave {
-  animation: slideIn .3s cubic-bezier(0.445, 0.05, 0.55, 0.95) reverse;
-}
-
 
 @keyframes slideIn {
   0% {
     opacity: 0;
+    transform: translate3d(0, -150%, 0);
   }
-  40% {
-    opacity: 0;
+  50% {
+    transform: translate3d(0, 60%, 0);
+  }
+  80% {
+    opacity: 1;
   }
   100% {
-    opacity: 1;
+    transform: translate3d(0, 0, 0);
   }
 }

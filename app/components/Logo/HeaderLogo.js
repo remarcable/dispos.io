@@ -13,9 +13,9 @@ const HeaderLogo = ({ shouldShow }) => (
     <ReactCSSTransitionGroup
       transitionAppear
       transitionName={transitions}
-      transitionAppearTimeout={500}
-      transitionEnterTimeout={500}
-      transitionLeaveTimeout={300}
+      transitionAppearTimeout={800}
+      transitionEnter={false}
+      transitionLeave={false}
     >
       {shouldShow &&
         <Logo isTiny />
