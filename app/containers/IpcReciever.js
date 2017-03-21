@@ -2,40 +2,41 @@ import { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
 import { ipcRenderer } from 'electron';
-import { readFile as readJSONFile, writeFile as writeJSONFile } from 'jsonfile';
-import { setSheet, setEmptySheet, setFilePath } from '../actions';
+
+import {
+  requestNewFile,
+  requestOpenFile,
+  openFile,
+  requestCloseFile,
+  requestSaveFile,
+  saveFile,
+  requestDuplicateFile,
+  requestExportToPdf,
+  requestPrint,
+} from '../actions';
 
 const propTypes = {
-  appData: PropTypes.object.isRequired,
-  isEditMode: PropTypes.bool.isRequired,
-  filePath: PropTypes.string.isRequired,
-  dispatchSetEmptySheet: PropTypes.func.isRequired,
-  dispatchSetSheet: PropTypes.func.isRequired,
-  dispatchSetFilePath: PropTypes.func.isRequired,
+  dispatchRequestNewFile: PropTypes.func.isRequired,
+  dispatchRequestOpenFile: PropTypes.func.isRequired,
+  dispatchOpenFile: PropTypes.func.isRequired,
+  dispatchRequestCloseFile: PropTypes.func.isRequired,
+  dispatchRequestSaveFile: PropTypes.func.isRequired,
+  dispatchSaveFile: PropTypes.func.isRequired,
+  dispatchRequestDuplicateFile: PropTypes.func.isRequired,
+  dispatchRequestExportToPdf: PropTypes.func.isRequired,
+  dispatchRequestPrint: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = state => ({
-  appData: {
-    general: { ...state.general },
-    schedule: { ...state.schedule },
-    requirements: { ...state.requirements },
-    additionalDetails: { ...state.additionalDetails },
-    actions: [...state.actions],
-  },
-  isEditMode: state.editMode,
-  filePath: state.filePath,
-});
-
 const mapDispatchToProps = dispatch => ({
-  dispatchSetSheet: (
-    general,
-    schedule,
-    requirements,
-    additionalDetails,
-    actions,
-  ) => dispatch(setSheet(general, schedule, requirements, additionalDetails, actions)),
-  dispatchSetEmptySheet: () => dispatch(setEmptySheet()),
-  dispatchSetFilePath: (filePath) => dispatch(setFilePath(filePath)),
+  dispatchRequestNewFile: () => dispatch(requestNewFile()),
+  dispatchRequestOpenFile: () => dispatch(requestOpenFile()),
+  dispatchOpenFile: (filePath) => dispatch(openFile(filePath)),
+  dispatchRequestCloseFile: () => dispatch(requestCloseFile()),
+  dispatchRequestSaveFile: () => dispatch(requestSaveFile()),
+  dispatchSaveFile: (filePath) => dispatch(saveFile(filePath)),
+  dispatchRequestDuplicateFile: () => dispatch(requestDuplicateFile()),
+  dispatchRequestExportToPdf: () => dispatch(requestExportToPdf()),
+  dispatchRequestPrint: () => dispatch(requestPrint()),
 });
 
 class IpcReciever extends Component {
@@ -44,99 +45,52 @@ class IpcReciever extends Component {
 
     this.componentDidMount = this.componentDidMount.bind(this);
     this.componentWillUnmount = this.componentWillUnmount.bind(this);
-    this.getAppData = this.getAppData.bind(this);
-    this.getFilePath = this.getFilePath.bind(this);
-    this.getIsEditMode = this.getIsEditMode.bind(this);
   }
 
   componentDidMount() {
-    const { dispatchSetEmptySheet, dispatchSetSheet, dispatchSetFilePath } = this.props;
-
     ipcRenderer.on('request-new-file', () => {
-      const isEditMode = this.getIsEditMode();
-      let shouldProceed = true;
-      if (isEditMode) {
-        shouldProceed = confirm('There already is a file opened. Do you want to proceed?');
-      }
-
-      if (shouldProceed) dispatchSetEmptySheet();
+      console.log('request-new-file');
+      this.props.dispatchRequestNewFile();
     });
 
     ipcRenderer.on('request-open-file', () => {
-      const isEditMode = this.getIsEditMode();
-      let shouldProceed = true;
-      if (isEditMode) {
-        shouldProceed = confirm('There already is a file opened. Do you want to proceed?');
-      }
-
-      if (shouldProceed) ipcRenderer.send('grant-open-file');
+      console.log('request-open-file');
+      this.props.dispatchRequestOpenFile();
     });
 
     ipcRenderer.on('open-file', (e, filePath) => {
-      readJSONFile(filePath, (err, obj) => {
-        if (err) {
-          console.log('myError', err);
-          return;
-        }
-        const { general, schedule, requirements, additionalDetails, actions } = obj;
-        dispatchSetSheet(general, schedule, requirements, additionalDetails, actions);
-        dispatchSetFilePath(filePath);
-      });
+      console.log('open-file', filePath);
+      this.props.dispatchOpenFile(filePath);
     });
 
     ipcRenderer.on('request-close-file', () => {
       console.log('request-close-file');
+      this.props.dispatchRequestCloseFile();
     });
 
     ipcRenderer.on('request-save-file', () => {
-      const isEditMode = this.getIsEditMode();
-      if (!isEditMode) return;
-
-      const appData = this.getAppData();
-      const filePath = this.getFilePath();
-
-      if (filePath) {
-        writeJSONFile(filePath, appData, { spaces: 2 }, (err) => {
-          if (err) {
-            console.log('myError', err);
-          }
-        });
-      } else {
-        ipcRenderer.send('grant-save-file');
-      }
+      console.log('request-save-file');
+      this.props.dispatchRequestSaveFile();
     });
 
     ipcRenderer.on('save-file', (e, filePath) => {
-      const isEditMode = this.getIsEditMode();
-      if (!isEditMode) return;
-
-      const appData = this.getAppData();
-      writeJSONFile(filePath, appData, { spaces: 2 }, (err) => {
-        if (err) {
-          console.log('myError', err);
-        }
-      });
+      console.log('save-file', filePath);
+      this.props.dispatchSaveFile(filePath);
     });
 
     ipcRenderer.on('request-duplicate-file', () => {
-      const isEditMode = this.getIsEditMode();
-      if (!isEditMode) return;
-
-      ipcRenderer.send('grant-save-file');
+      console.log('request-duplicate-file');
+      this.props.dispatchRequestDuplicateFile();
     });
 
     ipcRenderer.on('request-export-to-pdf', () => {
-      const isEditMode = this.getIsEditMode();
-      if (!isEditMode) return;
-
-      ipcRenderer.send('grant-export-to-pdf');
+      console.log('request-export-to-pdf');
+      this.props.dispatchRequestExportToPdf();
     });
 
     ipcRenderer.on('request-print', () => {
-      const isEditMode = this.getIsEditMode();
-      if (!isEditMode) return;
-
-      ipcRenderer.send('grant-print');
+      console.log('request-print');
+      this.props.dispatchRequestPrint();
     });
   }
 
@@ -152,18 +106,6 @@ class IpcReciever extends Component {
     ipcRenderer.removeListener('save-file');
   }
 
-  getAppData() {
-    return this.props.appData;
-  }
-
-  getFilePath() {
-    return this.props.filePath;
-  }
-
-  getIsEditMode() {
-    return this.props.isEditMode;
-  }
-
   render() {
     return null;
   }
@@ -172,6 +114,6 @@ class IpcReciever extends Component {
 IpcReciever.propTypes = propTypes;
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps,
 )(IpcReciever);

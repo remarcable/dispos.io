@@ -29,14 +29,6 @@ export function resetSheet() {
   return { type: RESET_SHEET };
 }
 
-export function openFile() {
-  return () => {
-    setTimeout(() => {
-      ipcRenderer.send('grant-open-file');
-    }, 200); // To make buttons appear snappier
-  };
-}
-
 export function setEmptySheet() {
   const { general, schedule, requirements, additionalDetails, actions } = empty;
   return setSheet(general, schedule, requirements, additionalDetails, actions);
@@ -44,3 +36,4 @@ export function setEmptySheet() {
 
 export * from './updateFields';
 export * from './setters';
+export * from './fileOperations';
