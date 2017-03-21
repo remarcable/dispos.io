@@ -49,47 +49,38 @@ class IpcReciever extends Component {
 
   componentDidMount() {
     ipcRenderer.on('request-new-file', () => {
-      console.log('request-new-file');
       this.props.dispatchRequestNewFile();
     });
 
     ipcRenderer.on('request-open-file', () => {
-      console.log('request-open-file');
       this.props.dispatchRequestOpenFile();
     });
 
     ipcRenderer.on('open-file', (e, filePath) => {
-      console.log('open-file', filePath);
       this.props.dispatchOpenFile(filePath);
     });
 
     ipcRenderer.on('request-close-file', () => {
-      console.log('request-close-file');
       this.props.dispatchRequestCloseFile();
     });
 
     ipcRenderer.on('request-save-file', () => {
-      console.log('request-save-file');
       this.props.dispatchRequestSaveFile();
     });
 
     ipcRenderer.on('save-file', (e, filePath) => {
-      console.log('save-file', filePath);
       this.props.dispatchSaveFile(filePath);
     });
 
     ipcRenderer.on('request-duplicate-file', () => {
-      console.log('request-duplicate-file');
       this.props.dispatchRequestDuplicateFile();
     });
 
     ipcRenderer.on('request-export-to-pdf', () => {
-      console.log('request-export-to-pdf');
       this.props.dispatchRequestExportToPdf();
     });
 
     ipcRenderer.on('request-print', () => {
-      console.log('request-print');
       this.props.dispatchRequestPrint();
     });
   }

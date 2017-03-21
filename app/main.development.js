@@ -227,7 +227,7 @@ app.on('ready', async () => {
         selector: 'performMiniaturize:'
       }, {
         label: 'Close',
-        accelerator: 'Command+W',
+        accelerator: 'Command+Shift+W',
         selector: 'performClose:'
       }, {
         type: 'separator'
@@ -368,3 +368,5 @@ ipcMain.on('grant-open-file', () => openFile(mainWindow));
 ipcMain.on('grant-save-file', () => saveFile(mainWindow));
 ipcMain.on('grant-export-to-pdf', () => pdfFile(mainWindow));
 ipcMain.on('grant-print', () => printFile(mainWindow));
+
+ipcMain.on('close-window', () => mainWindow.close());

@@ -1,6 +1,6 @@
 import { ipcRenderer } from 'electron';
 import { readFile as readJSONFile, writeFile as writeJSONFile } from 'jsonfile';
-import { setSheet, setEmptySheet, setFilePath } from '../';
+import { setSheet, setEmptySheet, setFilePath, resetSheet } from '../';
 
 export function requestNewFile() {
   return (dispatch, getState) => {
@@ -8,7 +8,7 @@ export function requestNewFile() {
     let shouldProceed = true;
 
     if (isEditMode) {
-      shouldProceed = confirm('There already is a file opened. Do you want to proceed?');
+      shouldProceed = confirm('There already is a file opened. Do you want to proceed?'); // eslint-disable-line
     }
 
     if (shouldProceed) dispatch(setEmptySheet());
@@ -17,15 +17,15 @@ export function requestNewFile() {
 
 export function requestOpenFile() {
   return (dispatch, getState) => {
-    const isEditMode = getState().editMode
+    const isEditMode = getState().editMode;
     let shouldProceed = true;
 
     if (isEditMode) {
-      shouldProceed = confirm('There already is a file opened. Do you want to proceed?');
+      shouldProceed = confirm('There already is a file opened. Do you want to proceed?'); // eslint-disable-line
     }
 
     if (shouldProceed) ipcRenderer.send('grant-open-file');
-  }
+  };
 }
 
 export function openFile(filePath) {
@@ -43,8 +43,21 @@ export function openFile(filePath) {
 }
 
 export function requestCloseFile() {
-  return () => {
-    console.log('request-close-file');
+  return (dispatch, getState) => {
+    const isEditMode = getState().editMode;
+    let saveFileFirst = false;
+
+    if (isEditMode) {
+      saveFileFirst = !confirm('Have you already saved your file?'); // eslint-disable-line
+    } else {
+      ipcRenderer.send('close-window');
+    }
+
+    if (saveFileFirst) {
+      dispatch(requestSaveFile());
+    } else {
+      dispatch(resetSheet());
+    }
   };
 }
 
