@@ -1,0 +1,97 @@
+.controlsWrapper {
+  position: fixed;
+  z-index: 1500;
+  top: 0;
+  right: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+@media print {
+  .controlsWrapper {
+    display: none;
+  }
+}
+
+.controls {
+  padding: 1em;
+}
+
+.controlBoxWrapper {
+  margin: .5em 0;
+  font-size: .75em;
+  color: #BBBCC7;
+  text-align: right;
+}
+
+.isSmall .controlBoxWrapper {
+  opacity: 0;
+  transform: translateX(100%);
+  transition: .2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+.isSmall:hover .controlBoxWrapper {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.letter {
+  position: relative;
+  z-index: 100;
+  width: 3.5em;
+  height: 3.5em;
+  margin-left: 1em;
+  border: 0;
+  background-color: #ECEDF3;
+  color: #818395;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.letter:hover {
+  background-color: #e1e2e7;
+}
+
+.letter:focus {
+  outline: 0;
+  background-color: #dfe0e6;
+}
+
+.letter:active {
+  background-color: #dbdce0;
+}
+
+.caption {
+  display: inline-block;
+  opacity: 0;
+  transform: translateX(150%);
+  transition: .2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  cursor: default;
+}
+
+.controls:hover .caption {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* stagger animation */
+.controlBoxWrapper:nth-child(1) .caption, .controlBoxWrapper:nth-child(1) {
+  transition-duration: .2s;
+}
+
+.controlBoxWrapper:nth-child(2) .caption, .controlBoxWrapper:nth-child(2) {
+  transition-duration: .25s;
+}
+
+.controlBoxWrapper:nth-child(3) .caption, .controlBoxWrapper:nth-child(3) {
+  transition-duration: .3s;
+}
+
+.controlBoxWrapper:nth-child(4) .caption, .controlBoxWrapper:nth-child(4) {
+  transition-duration: .35s;
+}
+
+.controlBoxWrapper:nth-child(5) .caption, .controlBoxWrapper:nth-child(5) {
+  transition-duration: .4s;
+}
