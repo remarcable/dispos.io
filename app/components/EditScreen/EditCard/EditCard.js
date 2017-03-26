@@ -1,6 +1,8 @@
 import React, { PropTypes } from 'react';
 import styles from './EditCard.css';
 
+import transformFields from '../../../utils/transformField';
+
 import TextField from './InputFields/TextField/TextField';
 import CloseButton from './CloseButton/CloseButton';
 
@@ -16,10 +18,7 @@ const propTypes = {
 };
 
 const EditCard = ({ fields, title, onChange, showCloseButton = false, removeCard }) => {
-  // Transforms { myKey: 'myValue' } to [{ key: 'myKey', value: 'myValue'}]
-  const transformedFields = Object.keys(fields).map(
-    fieldName => ({ key: fieldName, value: fields[fieldName] })
-  );
+  const transformedFields = transformFields(fields);
 
   return (
     <div className={styles.cardWrapper}>
