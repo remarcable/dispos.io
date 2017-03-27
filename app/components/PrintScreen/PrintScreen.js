@@ -5,8 +5,6 @@ import Logo from '../Logo/Logo';
 import PrintCard from './PrintCard/PrintCard';
 import PrintLayout from './PrintLayout/PrintLayout';
 
-import FrontPage from './FrontPage/FrontPage';
-
 import './print.global.css';
 
 
@@ -48,8 +46,6 @@ const mapStateToProps = state => ({
 const PrintScreen = ({
   general,
   schedule,
-  requirements,
-  additionalDetails,
   actions }) => (
     <PrintLayout
       headerLeft={general.date}
@@ -58,12 +54,6 @@ const PrintScreen = ({
       pageNumberCount={Math.ceil(actions.length / 4)}
     >
       <div>
-        <FrontPage
-          general={general}
-          schedule={schedule}
-          requirements={requirements}
-          additionalDetails={additionalDetails}
-        />
         {
           actions.map((action) => (
             <PrintCard
