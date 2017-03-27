@@ -13,7 +13,7 @@ const defaultProps = {
 };
 
 const CloseButton = ({ handleOnClick, className }) => (
-  <button className={classNames(styles.close, className)} onClick={handleOnClick}>
+  <button className={classNames(styles.close, className)} onClick={handleOnClick} tabIndex="-1">
     X
   </button>
 );
