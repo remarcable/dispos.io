@@ -5,6 +5,8 @@ import Logo from '../Logo/Logo';
 import PrintCard from './PrintCard/PrintCard';
 import PrintLayout from './PrintLayout/PrintLayout';
 
+import FrontPage from './FrontPage/FrontPage';
+
 import './print.global.css';
 
 
@@ -18,9 +20,6 @@ const propTypes = {
   }).isRequired,
   schedule: PropTypes.shape({
     start: PropTypes.string.isRequired,
-    rehearsal: PropTypes.string,
-    construction: PropTypes.string,
-    deconstruction: PropTypes.string,
   }).isRequired,
   actions: PropTypes.arrayOf(
     PropTypes.shape({
@@ -46,6 +45,8 @@ const mapStateToProps = state => ({
 const PrintScreen = ({
   general,
   schedule,
+  requirements,
+  additionalDetails,
   actions }) => (
     <PrintLayout
       headerLeft={general.date}
@@ -54,6 +55,12 @@ const PrintScreen = ({
       pageNumberCount={Math.ceil(actions.length / 4)}
     >
       <div>
+        <FrontPage
+          general={general}
+          schedule={schedule}
+          requirements={requirements}
+          additionalDetails={additionalDetails}
+        />
         {
           actions.map((action) => (
             <PrintCard
