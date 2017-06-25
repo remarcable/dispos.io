@@ -35,8 +35,8 @@ export function openFile(filePath) {
         console.log('myError', err);
         return;
       }
-      const { general, schedule, requirements, additionalDetails, actions } = obj;
-      dispatch(setSheet(general, schedule, requirements, additionalDetails, actions));
+      const { general, requirements, additionalDetails, actions } = obj;
+      dispatch(setSheet(general, requirements, additionalDetails, actions));
       dispatch(setFilePath(filePath));
     });
   };
@@ -69,7 +69,6 @@ export function requestSaveFile() {
 
     const appData = {
       general: { ...state.general },
-      schedule: { ...state.schedule },
       requirements: { ...state.requirements },
       additionalDetails: { ...state.additionalDetails },
       actions: [...state.actions],
@@ -97,7 +96,6 @@ export function saveFile(filePath) {
 
     const appData = {
       general: { ...state.general },
-      schedule: { ...state.schedule },
       requirements: { ...state.requirements },
       additionalDetails: { ...state.additionalDetails },
       actions: [...state.actions],

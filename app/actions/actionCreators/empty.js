@@ -6,13 +6,6 @@ export const general = {
   contact: '',
 };
 
-export const schedule = {
-  start: '',
-  rehearsal: '',
-  construction: '',
-  deconstruction: '',
-};
-
 export const requirements = {};
 
 export const additionalDetails = {};

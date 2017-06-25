@@ -7,10 +7,6 @@ export function updateFieldGeneral(field, value) {
   return { type: UPDATE_FIELD, field, value, section: 'general' };
 }
 
-export function updateFieldSchedule(field, value) {
-  return { type: UPDATE_FIELD, field, value, section: 'schedule' };
-}
-
 export function updateFieldRequirements(field, value) {
   return { type: UPDATE_FIELD, field, value, section: 'requirements' };
 }

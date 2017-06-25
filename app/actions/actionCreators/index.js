@@ -1,4 +1,3 @@
-import { ipcRenderer } from 'electron';
 import {
   SET_SHEET,
   RESET_SHEET,
@@ -6,7 +5,6 @@ import {
 
 import {
   setGeneral,
-  setSchedule,
   setRequirements,
   setAdditionalDetails,
   setActions,
@@ -14,10 +12,9 @@ import {
 
 import * as empty from './empty';
 
-export function setSheet(general, schedule, requirements, additionalDetails, actions) {
+export function setSheet(general, requirements, additionalDetails, actions) {
   return dispatch => {
     dispatch(setGeneral(general));
-    dispatch(setSchedule(schedule));
     dispatch(setRequirements(requirements));
     dispatch(setAdditionalDetails(additionalDetails));
     dispatch(setActions(actions));
@@ -30,8 +27,8 @@ export function resetSheet() {
 }
 
 export function setEmptySheet() {
-  const { general, schedule, requirements, additionalDetails, actions } = empty;
-  return setSheet(general, schedule, requirements, additionalDetails, actions);
+  const { general, requirements, additionalDetails, actions } = empty;
+  return setSheet(general, requirements, additionalDetails, actions);
 }
 
 export * from './updateFields';

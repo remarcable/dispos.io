@@ -2,7 +2,6 @@ import randomize from 'randomatic';
 
 import {
   SET_GENERAL,
-  SET_SCHEDULE,
   SET_REQUIREMENTS,
   SET_ADDITIONAL_DETAILS,
   SET_ACTIONS,
@@ -14,10 +13,6 @@ import {
 
 export function setGeneral(general) {
   return { type: SET_GENERAL, details: general };
-}
-
-export function setSchedule(schedule) {
-  return { type: SET_SCHEDULE, details: schedule };
 }
 
 export function setRequirements(requirements) {

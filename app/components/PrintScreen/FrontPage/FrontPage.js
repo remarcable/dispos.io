@@ -14,14 +14,10 @@ const propTypes = {
     client: PropTypes.string.isRequired,
     contact: PropTypes.string.isRequired,
   }).isRequired,
-  schedule: PropTypes.shape({
-    start: PropTypes.string.isRequired,
-  }).isRequired,
-  requirements: PropTypes.object.isRequired,
   additionalDetails: PropTypes.object.isRequired,
 };
 
-const FrontPage = ({ general, schedule, requirements, additionalDetails }) => (
+const FrontPage = ({ general, additionalDetails }) => (
   <div className={styles.frontPage}>
     <h1 className={styles.title}>{general.title}</h1>
     <h2 className={styles.date}>{general.date}</h2>
@@ -29,16 +25,6 @@ const FrontPage = ({ general, schedule, requirements, additionalDetails }) => (
     <Section
       title="General"
       content={general}
-    />
-
-    <Section
-      title="Requirements"
-      content={requirements}
-    />
-
-    <Section
-      title="Schedule"
-      content={schedule}
     />
 
     {transformFields(additionalDetails).map((item, i) => (

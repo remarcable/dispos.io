@@ -18,9 +18,6 @@ const propTypes = {
     client: PropTypes.string.isRequired,
     contact: PropTypes.string.isRequired,
   }).isRequired,
-  schedule: PropTypes.shape({
-    start: PropTypes.string.isRequired,
-  }).isRequired,
   actions: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
@@ -36,7 +33,6 @@ const propTypes = {
 
 const mapStateToProps = state => ({
   general: state.general,
-  schedule: state.schedule,
   requirements: state.requirements,
   additionalDetails: state.additionalDetails,
   actions: state.actions,
@@ -44,7 +40,6 @@ const mapStateToProps = state => ({
 
 const PrintScreen = ({
   general,
-  schedule,
   requirements,
   additionalDetails,
   actions }) => (
@@ -57,7 +52,6 @@ const PrintScreen = ({
       <div>
         <FrontPage
           general={general}
-          schedule={schedule}
           requirements={requirements}
           additionalDetails={additionalDetails}
         />

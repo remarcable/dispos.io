@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 
 import {
   updateFieldGeneral,
-  updateFieldSchedule,
   updateFieldActions,
   addAction,
   removeAction,
@@ -12,7 +11,6 @@ import {
 import styles from './EditScreen.css';
 
 import GeneralCard from './EditCard/GeneralCard/GeneralCard';
-import ScheduleCard from './EditCard/ScheduleCard/ScheduleCard';
 import ActCard from './EditCard/ActCard/ActCard';
 
 import AddCard from './EditCard/AddCard/AddCard';
@@ -24,12 +22,6 @@ const propTypes = {
     location: PropTypes.string.isRequired,
     client: PropTypes.string.isRequired,
     contact: PropTypes.string.isRequired,
-  }).isRequired,
-  schedule: PropTypes.shape({
-    start: PropTypes.string.isRequired,
-    rehearsal: PropTypes.string,
-    construction: PropTypes.string,
-    deconstruction: PropTypes.string,
   }).isRequired,
   actions: PropTypes.arrayOf(
     PropTypes.shape({
@@ -43,7 +35,6 @@ const propTypes = {
     }).isRequired,
   ).isRequired,
   onChangeGeneral: PropTypes.func.isRequired,
-  onChangeSchedule: PropTypes.func.isRequired,
   onChangeActions: PropTypes.func.isRequired,
   handleAddAction: PropTypes.func.isRequired,
   onRemoveAction: PropTypes.func.isRequired,
@@ -51,7 +42,6 @@ const propTypes = {
 
 const mapStateToProps = state => ({
   general: state.general,
-  schedule: state.schedule,
   requirements: state.requirements,
   additionalDetails: state.additionalDetails,
   actions: state.actions,
@@ -59,7 +49,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   onChangeGeneral: (field, value) => dispatch(updateFieldGeneral(field, value)),
-  onChangeSchedule: (field, value) => dispatch(updateFieldSchedule(field, value)),
   onChangeActions: (id, field, value) => dispatch(updateFieldActions(id, field, value)),
   handleAddAction: () => dispatch(addAction()),
   onRemoveAction: (index) => dispatch(removeAction(index)),
@@ -67,10 +56,8 @@ const mapDispatchToProps = dispatch => ({
 
 const EditScreen = ({
   general,
-  schedule,
   actions,
   onChangeGeneral,
-  onChangeSchedule,
   onChangeActions,
   handleAddAction,
   onRemoveAction }) => (
@@ -80,10 +67,6 @@ const EditScreen = ({
         <GeneralCard
           fields={general}
           onChange={onChangeGeneral}
-        />
-        <ScheduleCard
-          fields={schedule}
-          onChange={onChangeSchedule}
         />
 
         {

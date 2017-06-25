@@ -17,8 +17,8 @@ const PrintCard = ({ title, description, length, artist, requirements }) => (
         <tr className={styles.topRow}>
           <td>{length}</td>
           <td />
-          <td>start 19:05</td>
-          <td>end 19:08</td>
+          <td></td>
+          <td></td>
         </tr>
         <tr>
           <td className={styles.id}>#</td>
